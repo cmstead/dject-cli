@@ -1,0 +1,37 @@
+{
+  "name": "dject-cli",
+  "version": "1.0.0",
+  "description": "Command line tools for the Dject system",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha ./tests/**/*.js",
+    "build-readme": "node ./node_modules/booklisp/index.js ./readme/main.md ./readme.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmstead/dject-cli.git"
+  },
+  "keywords": [
+    "dependency-injection",
+    "di",
+    "dject",
+    "cli"
+  ],
+  "author": "Chris Stead",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/cmstead/dject-cli/issues"
+  },
+  "homepage": "https://github.com/cmstead/dject-cli#readme",
+  "devDependencies": {
+    "booklisp": "^1.7.2",
+    "chai": "^4.2.0",
+    "eslint": "^5.13.0",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "command-line-args": "^5.0.2",
+    "dject": "^1.11.6",
+    "prompt": "^1.0.0"
+  }
+}
