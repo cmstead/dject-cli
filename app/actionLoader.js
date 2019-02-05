@@ -4,7 +4,8 @@ function actionLoader(
     'use strict';
 
     const optionMap = {
-        configureCommonjs: 'configure-node-commonjs'
+        configureCommonjs: 'configure-node-commonjs',
+        configureEsModule: 'configure-es-module-builder'
     };
 
     function checkOptionOn(userOptions) {
@@ -17,17 +18,27 @@ function actionLoader(
         return __container.build(moduleName);
     }
 
+    function getConfigBuilderAction(builderName) {
+        const commonJsAction = buildModule(builderName);
+
+        return () => commonJsAction.buildAndWriteConfig();
+    }
+
+    function getHelpAction() {
+        const helpAction = buildModule('help');
+
+        return () => helpAction.displayHelpInfo();
+    }
+
     function getSelectedAction(userOptions) {
         const isSelectedOption = checkOptionOn(userOptions);
 
         if (isSelectedOption(optionMap.configureCommonjs)) {
-            const commonJsAction = buildModule('nodeCommonjsConfigCreator');
-
-            return () => commonJsAction.buildAndWriteConfig();
+            return getConfigBuilderAction('nodeCommonjsConfigCreator');
+        } if (isSelectedOption(optionMap.configureEsModule)) {
+            return getConfigBuilderAction('esModuleConfigCreator');
         } else {
-            const helpAction = buildModule('help');
-
-            return () => helpAction.displayHelpInfo();
+            return getHelpAction();
         }
     }
 

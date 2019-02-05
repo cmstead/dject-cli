@@ -14,6 +14,12 @@ function cliConfig() {
             type: Boolean,
 
             description: 'Create a new Node configuration for (require-style) CommonJS modules'
+        },
+        { 
+            name: 'configure-es-module-builder',
+            type: Boolean,
+
+            description: 'Create a new container build configuration for (import-style) ES-Standard modules'
         }
       ];
 }

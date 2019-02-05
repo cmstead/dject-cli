@@ -41,9 +41,22 @@ This command will give you information about the current supported behaviors of 
 **Command**: `dject --configure-node-commonjs`
 
 Configure-node-commonjs will prompt the user for configuration options. Sane defaults are provided and providing values for any options is strictly optional.  After running configure-node-commonjs, a file will be written in the current working directory which fully configures Dject to work as a DI container for your node application.
+
+### Creating a Container Builder Config for ES-Next Modules ###
+
+**Command**: `dject --configure-es-module-builder`
+
+Configure-es-module-builder will prompt the user for configuration options. Sane defaults are provided and providing values for any options is strictly optional.  After running Configure-es-module-builder, a file will be written in the current working directory which fully configures Dject CLI to build/rebuild a DI file for your import-based project. This build step will need to be integrated into your project build process.
+
+(Actual DI container builder is still in development)
     
 
 ## Version History ##
+
+**v1.1.0**
+
+- Updated default file location to app instead of dependencies for configuration builders
+- Introduced configuration construction for ES-Next Module DI container builder -- `dject --configure-es-module-builder`
 
 **v1.0.0**
 

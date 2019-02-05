@@ -8,8 +8,8 @@ function templateReader(
     const baseDir = path.join(__dirname, '..', '..', 'templates');
     const fileEncoding = { encoding: 'utf8' };
 
-    function buildTemplatePath(templateName) {
-        return path.join(baseDir, `${templateName}.template.js`);
+    function buildTemplatePath(templateName, extension = 'js') {
+        return path.join(baseDir, `${templateName}.template.${extension}`);
     }
 
     function readTemplateFile(templatePath) {
@@ -21,12 +21,12 @@ function templateReader(
         readTemplateFile
     );
 
-    function templateReader(templateName) {
-        return () => buildPathAndReadFile(templateName);
+    function templateReader(templateName, extension) {
+        return () => buildPathAndReadFile(templateName, extension);
     };
 
     return {
-        readImportContainerTemplate: templateReader('importContainer'),
+        readEsModuleContainerTemplate: templateReader('esModuleContainer', 'json'),
         readNodeCommonjsContainerTemplate: templateReader('nodeCommonjsContainer')
     };
 }
