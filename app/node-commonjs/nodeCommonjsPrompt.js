@@ -15,7 +15,7 @@ function nodeCommonjsPrompt(
                 description: 'Root directory for application dependencies',
                 type: 'string',
                 required: true,
-                default: 'dependencies'
+                default: 'app'
             }
         }
     };
