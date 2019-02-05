@@ -1,4 +1,5 @@
 function esModulePrompt(
+    importDIDefaults,
     promptLoader
 ) {
     'use strict';
@@ -9,13 +10,13 @@ function esModulePrompt(
                 description: 'Name for config file (do not include file extension)',
                 type: 'string',
                 required: true,
-                default: 'es-module-config'
+                default: importDIDefaults.configFileName
             },
             dependencyRootDirectory: {
                 description: 'Root directory for application dependencies',
                 type: 'string',
                 required: true,
-                default: 'app'
+                default: importDIDefaults.dependencyRootDirectory
             }
         }
     };

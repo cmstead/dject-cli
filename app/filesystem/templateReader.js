@@ -1,19 +1,18 @@
 function templateReader(
-    fs,
     functionUtils,
-    path
+    path,
+    textFileService
 ) {
     'use strict';
 
     const baseDir = path.join(__dirname, '..', '..', 'templates');
-    const fileEncoding = { encoding: 'utf8' };
 
     function buildTemplatePath(templateName, extension = 'js') {
         return path.join(baseDir, `${templateName}.template.${extension}`);
     }
 
     function readTemplateFile(templatePath) {
-        return fs.readFileSync(templatePath, fileEncoding);
+        return textFileService.readTextFile(templatePath);
     }
 
     const buildPathAndReadFile = functionUtils.compose(

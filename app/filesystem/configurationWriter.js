@@ -1,7 +1,7 @@
 function configurationWriter(
-    fs,
     path,
-    process
+    process,
+    textFileService
 ) {
     'use strict';
 
@@ -14,7 +14,7 @@ function configurationWriter(
     function writeContentToConfig(fullFileName, fileContent) {
         const destinationPath = buildDestinationPath(fullFileName);
 
-        fs.writeFileSync(destinationPath, fileContent, { encoding: 'utf8' });
+        textFileService.writeTextFile(destinationPath, fileContent);
     }
 
     function writeConfigFile(fileName, fileContent) {

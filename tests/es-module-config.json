@@ -1,0 +1,6 @@
+{
+    "cwd": "test-imports",
+    "modulePaths": [
+        "**${pathSeparator}*.js"
+    ]
+}
