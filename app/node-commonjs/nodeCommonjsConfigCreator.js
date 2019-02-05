@@ -1,5 +1,5 @@
 function nodeCommonjsConfigCreator(
-    configurationFileWriter,
+    configurationWriter,
     nodeCommonjsBuilder,
     nodeCommonjsPrompt
 ) {
@@ -10,7 +10,7 @@ function nodeCommonjsConfigCreator(
             const configFileName = configData.configFileName;
             const configContent = nodeCommonjsBuilder.buildContainerConfig(configData);
 
-            configurationFileWriter.writeConfigFile(configFileName, configContent);
+            configurationWriter.writeConfigFile(configFileName, configContent);
         });
     }
 

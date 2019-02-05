@@ -1,4 +1,4 @@
-function configurationFileWriter(
+function configurationWriter(
     fs,
     path,
     process
@@ -17,4 +17,4 @@ function configurationFileWriter(
     };
 }
 
-module.exports = configurationFileWriter;
+module.exports = configurationWriter;
