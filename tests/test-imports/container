@@ -1,0 +1,13 @@
+import dject from 'dject';
+
+import module0 from '../test-imports/subfolder/test2.js';
+import module1 from '../test-imports/test1.js';
+
+
+const container = dject.new();
+
+container.register(module0.value, module0.name);
+container.register(module1.value, module1.name);
+
+
+export default container;
