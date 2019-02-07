@@ -1,7 +1,10 @@
 function importDIBuilder(
     functionUtils,
+    glob,
     importDIDefaults,
     path,
+    templateFiller,
+    templateReader,
     textFileService
 ) {
     'use strict';
@@ -22,6 +25,7 @@ function importDIBuilder(
     function replaceConfigPathSeparators(importDIConfig) {
         return {
             ['cwd']: replacePathSeparator(importDIConfig.cwd),
+            ['djectLocation']: replacePathSeparator(importDIConfig.djectLocation),
             ['destinationPath']: replacePathSeparator(importDIConfig.destinationPath),
             ['modulePaths']: importDIConfig.modulePaths.map(replacePathSeparator)
         };
@@ -43,11 +47,69 @@ function importDIBuilder(
         (diConfig) => replaceCwdKeys(diConfig)
     );
 
+    function loadFilePaths({ modulePaths, cwd }) {
+        return modulePaths
+            .reduce(function (pathSet, currentPattern) {
+                const globPathPattern = path.join(cwd, currentPattern);
+                const globbedPaths = glob.sync(globPathPattern);
+
+                return pathSet.concat(globbedPaths);
+            }, []);
+    }
+
+    function repeat(operation, times, initialValue) {
+        let result = typeof initialValue !== 'undefined' ? initialValue : null;
+
+        for (let i = 0; i < times; i++) {
+            result = operation(result);
+        }
+
+        return result;
+    }
+
+    function buildPathTraversal(destinationPath) {
+        const directoryCount = destinationPath.split(/[\/\\]/g).length - 1;
+
+        return repeat(value => `${value}..${path.sep}`, directoryCount, '');
+    }
+
+    function createImportStatements(filePaths, destinationPath) {
+        const traversalPath = buildPathTraversal(destinationPath);
+        return filePaths
+            .reduce(function (fileContent, filePath, index) {
+                return fileContent.concat(`import module${index} from '${traversalPath}${filePath}';\n`);
+            }, '');
+    }
+
+    function createDIRegisterStatements(filePaths) {
+        return filePaths
+            .reduce(function (fileContent, _, index) {
+                const moduleKey = `module${index}`;
+                const moduleName = `${moduleKey}.name`;
+                const moduleValue = `${moduleKey}.value`;
+                return fileContent.concat(`container.register(${moduleValue}, ${moduleName});\n`);
+            }, '');
+    }
+
     function buildAndWriteDIFile(userOptions) {
         const configPath = getConfigPathOrDefault(userOptions);
         const importDIConfig = loadAndCleanImportDIConfig(configPath);
 
-        console.log(importDIConfig);
+        const filePaths = loadFilePaths(importDIConfig);
+        const importStatements = createImportStatements(filePaths, importDIConfig.destinationPath);
+        const registerStatements = createDIRegisterStatements(filePaths);
+
+        const importDITemplate = templateReader.readImportDIContainerTemplate();
+
+        const templateKeyValueMap = {
+            djectLocation: importDIConfig.djectLocation,
+            importStatements: importStatements,
+            registerStatements: registerStatements
+        };
+
+        const fileContent = templateFiller.fillTemplateKeys(importDITemplate, templateKeyValueMap);
+
+        textFileService.writeTextFile(importDIConfig.destinationPath, fileContent);
     }
 
     return {

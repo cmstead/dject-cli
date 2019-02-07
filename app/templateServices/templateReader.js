@@ -26,6 +26,7 @@ function templateReader(
 
     return {
         readEsModuleContainerTemplate: templateReader('esModuleContainer', 'json'),
+        readImportDIContainerTemplate: templateReader('importDIContainer'),
         readNodeCommonjsContainerTemplate: templateReader('nodeCommonjsContainer')
     };
 }

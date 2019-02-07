@@ -18,6 +18,12 @@ function esModulePrompt(
                 required: true,
                 default: importDIDefaults.dependencyRootDirectory
             },
+            djectLocation: {
+                description: 'Location of Dject module',
+                type: 'string',
+                required: true,
+                default: 'dject'
+            },
             destinationPath: {
                 description: 'Directory to write output file to',
                 type: 'string',
