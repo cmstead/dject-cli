@@ -1,5 +1,6 @@
 {
-    "cwd": "test-imports",
+    "cwd": "app",
+    "destinationPath": "${cwd}${pathSeparator}container",
     "modulePaths": [
         "**${pathSeparator}*.js"
     ]
