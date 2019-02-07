@@ -1,5 +1,6 @@
 {
     "cwd": "{{dependencyRootDirectory}}",
+    "destinationPath": "{{destinationPath}}${pathSeparator}{{destinationFileName}}",
     "modulePaths": [
         "**${pathSeparator}*.js"
     ]

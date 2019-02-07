@@ -20,6 +20,12 @@ function cliConfig() {
             type: Boolean,
 
             description: 'Create a new container build configuration for (import-style) ES-Standard modules'
+        },
+        { 
+            name: 'build-import-container',
+            type: Boolean,
+
+            description: 'Build a new DI container file for all import files'
         }
       ];
 }

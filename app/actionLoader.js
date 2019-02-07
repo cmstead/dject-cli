@@ -6,7 +6,7 @@ function actionLoader(
     const optionMap = {
         configureCommonjs: 'configure-node-commonjs',
         configureEsModule: 'configure-es-module-builder',
-        buildImportDI: 'build-import-di'
+        buildImportContainer: 'build-import-container'
     };
 
     function checkOptionOn(userOptions) {
@@ -28,7 +28,7 @@ function actionLoader(
     function getDIBuilderAction() {
         const importDIBuilder = buildModule('importDIBuilder');
 
-        return () => importDIBuilder.buildAndWriteDIFile();
+        return (userConfig) => importDIBuilder.buildAndWriteDIFile(userConfig);
     }
 
     function getHelpAction() {
@@ -44,7 +44,7 @@ function actionLoader(
             return getConfigBuilderAction('nodeCommonjsConfigCreator');
         } if (isSelectedOption(optionMap.configureEsModule)) {
             return getConfigBuilderAction('esModuleConfigCreator');
-        } if (isSelectedOption(optionMap.buildImportDI)) {
+        } if (isSelectedOption(optionMap.buildImportContainer)) {
             return getDIBuilderAction();
         } else {
             return getHelpAction();

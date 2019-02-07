@@ -17,7 +17,20 @@ function esModulePrompt(
                 type: 'string',
                 required: true,
                 default: importDIDefaults.dependencyRootDirectory
-            }
+            },
+            destinationPath: {
+                description: 'Directory to write output file to',
+                type: 'string',
+                required: true,
+                default: '${cwd}'
+            },
+            destinationFileName: {
+                description: 'Name of file to write (do not include file extension)',
+                type: 'string',
+                required: true,
+                default: "container"
+            },
+
         }
     };
 
