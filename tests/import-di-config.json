@@ -1,0 +1,8 @@
+{
+    "cwd": "app",
+    "djectLocation": "dject",
+    "destinationPath": "${cwd}${pathSeparator}container",
+    "modulePaths": [
+        "**${pathSeparator}*.js"
+    ]
+}

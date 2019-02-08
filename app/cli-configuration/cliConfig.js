@@ -26,6 +26,12 @@ function cliConfig() {
             type: Boolean,
 
             description: 'Build a new DI container file for all import files'
+        },
+        {
+            name: 'config-path',
+            type: String,
+
+            description: 'Provide a config file path to use with --build-import-container'
         }
       ];
 }

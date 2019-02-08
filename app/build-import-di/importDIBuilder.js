@@ -13,8 +13,10 @@ function importDIBuilder(
     const pathSeparatorKey = '${pathSeparator}';
 
     function getConfigPathOrDefault(userOptions) {
-        return typeof userOptions.configPath === 'string'
-            ? userOptions.configPath
+        const configPath = userOptions['config-path'];
+
+        return typeof configPath === 'string'
+            ? configPath
             : `${importDIDefaults.configFileName}.json`;
     }
 
