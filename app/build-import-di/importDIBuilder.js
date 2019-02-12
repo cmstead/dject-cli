@@ -9,7 +9,8 @@ function importDIBuilder(
 ) {
     'use strict';
 
-    const pathSeparator = path.sep;
+    const pathSeparator = '/';
+    const pathSeparatorPattern = /[\/\\]/g;
     const pathSeparatorKey = '${pathSeparator}';
 
     function getConfigPathOrDefault(userOptions) {
@@ -70,9 +71,9 @@ function importDIBuilder(
     }
 
     function buildPathTraversal(destinationPath) {
-        const directoryCount = destinationPath.split(/[\/\\]/g).length - 1;
+        const directoryCount = destinationPath.split(pathSeparatorPattern).length - 1;
 
-        return repeat(value => `${value}..${path.sep}`, directoryCount, '');
+        return repeat(value => `${value}..${pathSeparator}`, directoryCount, '');
     }
 
     function createImportStatements(filePaths, destinationPath) {
