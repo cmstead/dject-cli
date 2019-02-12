@@ -93,6 +93,12 @@ function importDIBuilder(
             }, '');
     }
 
+    function getContainerTemplate(userOptions) {
+        return userOptions.isNodeApplication
+            ? templateReader.readImportDIContainerNodeTemplate()
+            : templateReader.readImportDIContainerClientTemplate();
+    }
+
     function buildAndWriteDIFile(userOptions) {
         const configPath = getConfigPathOrDefault(userOptions);
         const importDIConfig = loadAndCleanImportDIConfig(configPath);
@@ -101,7 +107,7 @@ function importDIBuilder(
         const importStatements = createImportStatements(filePaths, importDIConfig.destinationPath);
         const registerStatements = createDIRegisterStatements(filePaths);
 
-        const importDITemplate = templateReader.readImportDIContainerTemplate();
+        const importDITemplate = getContainerTemplate(userOptions);
 
         const templateKeyValueMap = {
             djectLocation: importDIConfig.djectLocation,

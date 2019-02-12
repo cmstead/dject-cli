@@ -1,7 +1,6 @@
-import dject from '{{djectLocation}}';
-
 {{importStatements}}
 
+const dject = require('{{djectLocation}}');
 const container = dject.new();
 
 {{registerStatements}}

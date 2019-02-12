@@ -36,7 +36,12 @@ function esModulePrompt(
                 required: true,
                 default: "container"
             },
-
+            isNodeApplication: {
+                description: 'Is this for a node application',
+                type: 'boolean',
+                required: true,
+                default: false
+            }
         }
     };
 

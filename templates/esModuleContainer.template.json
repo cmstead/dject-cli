@@ -1,6 +1,7 @@
 {
     "cwd": "{{dependencyRootDirectory}}",
     "djectLocation": "{{djectLocation}}",
+    "isNodeApplication": {{isNodeApplication}},
     "destinationPath": "{{destinationPath}}${pathSeparator}{{destinationFileName}}",
     "modulePaths": [
         "**${pathSeparator}*.js"
