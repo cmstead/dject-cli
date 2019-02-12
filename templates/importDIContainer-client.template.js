@@ -1,6 +1,6 @@
 {{importStatements}}
 
-const container = window.dject.new();
+const container = window.dject.new({});
 
 {{registerStatements}}
 
