@@ -1,0 +1,6 @@
+[
+    [
+        "",
+        "\r\n\r\nconst container = window.dject.new({});\r\n\r\n\r\n\r\nexport default container;"
+    ]
+]

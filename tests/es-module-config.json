@@ -1,8 +1,0 @@
-{
-    "cwd": "test-imports",
-    "djectLocation": "dject",
-    "destinationPath": "${cwd}${pathSeparator}container",
-    "modulePaths": [
-        "**${pathSeparator}*.js"
-    ]
-}

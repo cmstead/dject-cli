@@ -1,4 +1,4 @@
-function templateFiller () {
+function templateUtils() {
     'use strict';
 
     function fillTemplateKeys(templateContent, keyValueMap) {
@@ -11,9 +11,13 @@ function templateFiller () {
             }, templateContent);
     }
 
+    const buildTemplateCompiler = (importDITemplate) =>
+        (templateKeyValueMap) =>
+            fillTemplateKeys(importDITemplate, templateKeyValueMap)
+
     return {
-        fillTemplateKeys: fillTemplateKeys
+        buildTemplateCompiler: buildTemplateCompiler
     };
 }
 
-module.exports = templateFiller;
+module.exports = templateUtils;

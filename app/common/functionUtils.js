@@ -21,9 +21,20 @@ function functionUtils() {
         }
     }
 
+    function repeat(operation, times, initialValue) {
+        let result = typeof initialValue !== 'undefined' ? initialValue : null;
+
+        for (let i = 0; i < times; i++) {
+            result = operation(result);
+        }
+
+        return result;
+    }
+    
     return {
         compose: compose,
-        foldCompose: foldCompose
+        foldCompose: foldCompose,
+        repeat: repeat
     };
 }
 
