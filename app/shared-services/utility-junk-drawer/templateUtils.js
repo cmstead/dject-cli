@@ -16,7 +16,8 @@ function templateUtils() {
             fillTemplateKeys(importDITemplate, templateKeyValueMap)
 
     return {
-        buildTemplateCompiler: buildTemplateCompiler
+        buildTemplateCompiler: buildTemplateCompiler,
+        fillTemplateKeys: fillTemplateKeys
     };
 }
 
