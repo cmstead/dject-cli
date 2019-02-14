@@ -31,6 +31,7 @@
     "approvals-config-factory": "^1.0.0",
     "booklisp": "^1.7.2",
     "chai": "^4.2.0",
+    "dject-dynamic-double-loader": "^1.0.0",
     "eslint": "^5.13.0",
     "mocha": "^5.2.0",
     "sinon": "^7.2.3"
