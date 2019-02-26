@@ -114,7 +114,7 @@ function importDIBuilder(
         const importStatements = createImportStatements(filePaths, importDIConfig.destinationPath);
         const registerStatements = createDIRegisterStatements(filePaths);
 
-        const importDITemplate = getContainerTemplate(userOptions);
+        const importDITemplate = getContainerTemplate(importDIConfig);
 
         const templateKeyValueMap = {
             djectLocation: importDIConfig.djectLocation,
