@@ -26,12 +26,12 @@ function importDIBuilder(
     }
 
     function replaceConfigPathSeparators(importDIConfig) {
-        return {
-            ['cwd']: replacePathSeparator(importDIConfig.cwd),
-            ['djectLocation']: replacePathSeparator(importDIConfig.djectLocation),
-            ['destinationPath']: replacePathSeparator(importDIConfig.destinationPath),
-            ['modulePaths']: importDIConfig.modulePaths.map(replacePathSeparator)
-        };
+        importDIConfig.cwd = replacePathSeparator(importDIConfig.cwd);
+        importDIConfig.djectLocation = replacePathSeparator(importDIConfig.djectLocation);
+        importDIConfig.destinationPath = replacePathSeparator(importDIConfig.destinationPath);
+        importDIConfig.modulePaths = importDIConfig.modulePaths.map(replacePathSeparator);
+        
+        return importDIConfig;
     }
 
     function replaceCwdKeys(diConfig) {
