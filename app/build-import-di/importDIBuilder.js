@@ -76,11 +76,17 @@ function importDIBuilder(
         return repeat(value => `${value}..${pathSeparator}`, directoryCount, '');
     }
 
+    function cleanModulePath(filePath) {
+        const scriptExtensionPattern = /\.(js|ts)$/i;
+        const extensionOffset = filePath.length - 3;
+        return scriptExtensionPattern.test(filePath) ? filePath.substr(0, extensionOffset) : filePath;
+    }
+
     function createImportStatements(filePaths, destinationPath) {
         const traversalPath = buildPathTraversal(destinationPath);
         return filePaths
             .reduce(function (fileContent, filePath, index) {
-                return fileContent.concat(`import module${index} from '${traversalPath}${filePath}';\n`);
+                return fileContent.concat(`import module${index} from '${cleanModulePath(filePath)}${filePath}';\n`);
             }, '');
     }
 
