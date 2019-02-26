@@ -86,7 +86,7 @@ function importDIBuilder(
         const traversalPath = buildPathTraversal(destinationPath);
         return filePaths
             .reduce(function (fileContent, filePath, index) {
-                return fileContent.concat(`import module${index} from '${cleanModulePath(filePath)}${filePath}';\n`);
+                return fileContent.concat(`import module${index} from '${traversalPath}${cleanModulePath(filePath)}';\n`);
             }, '');
     }
 
