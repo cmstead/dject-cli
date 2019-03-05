@@ -90,13 +90,21 @@ function importDIBuilder(
             }, '');
     }
 
+    function createRegisterValue(index) {
+        const moduleKey = `module${index}`;
+        const moduleName = `${moduleKey}.name`;
+        const moduleValue = `${moduleKey}.value`;
+
+        return `
+Object.keys(${moduleKey}).filter(key => key !== 'name').forEach((key) => ${moduleValue}[key] = ${moduleKey}[key]);
+container.register(${moduleValue}, ${moduleName});
+`;
+    }
+
     function createDIRegisterStatements(filePaths) {
         return filePaths
             .reduce(function (fileContent, _, index) {
-                const moduleKey = `module${index}`;
-                const moduleName = `${moduleKey}.name`;
-                const moduleValue = `${moduleKey}.value`;
-                return fileContent.concat(`container.register(${moduleValue}, ${moduleName});\n`);
+                return fileContent.concat(createRegisterValue(index));
             }, '');
     }
 
