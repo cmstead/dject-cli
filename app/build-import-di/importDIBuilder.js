@@ -96,7 +96,7 @@ function importDIBuilder(
         const moduleValue = `${moduleKey}.value`;
 
         return `
-Object.keys(${moduleKey}).filter(key => key !== 'name').forEach((key) => ${moduleValue}[key] = ${moduleKey}[key]);
+container.copyProps(${moduleValue}, ${moduleKey});
 container.register(${moduleValue}, ${moduleName});
 `;
     }
