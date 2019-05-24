@@ -1,6 +1,8 @@
 {{importStatements}}
 
-const container = window.dject.new({});
+const container = window.dject.new({
+    dependenciesAsObject: true
+});
 
 {{registerStatements}}
 
