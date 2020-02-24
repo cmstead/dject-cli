@@ -1,6 +1,6 @@
 {
   "name": "dject-cli",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Command line tools for the Dject system",
   "main": "index.js",
   "scripts": {
