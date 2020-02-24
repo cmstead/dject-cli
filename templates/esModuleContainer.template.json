@@ -2,8 +2,8 @@
     "cwd": "{{dependencyRootDirectory}}",
     "djectLocation": "{{djectLocation}}",
     "isNodeApplication": {{isNodeApplication}},
-    "destinationPath": "{{destinationPath}}${pathSeparator}{{destinationFileName}}",
+    "destinationPath": "{{destinationPath}}${pathSeparator}{{destinationFileName}}.{{languageExtension}}",
     "modulePaths": [
-        "**${pathSeparator}*.js"
+        "**${pathSeparator}*.{{languageExtension}}"
     ]
 }

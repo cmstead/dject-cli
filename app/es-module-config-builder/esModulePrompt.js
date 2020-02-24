@@ -3,9 +3,20 @@ function esModulePrompt(
     promptLoader
 ) {
     'use strict';
-    
+
     const nodeCommonjsPromptSchema = {
         properties: {
+            languageExtension: {
+                description: 'What file extension should be used? (js/mjs/ts)',
+                type: 'string',
+                required: true,
+                default: 'js',
+                confirm: function(value) {
+                    return value === 'js'
+                        || value === 'mjs'
+                        || value === 'ts'
+                }
+            },
             configFileName: {
                 description: 'Name for config file (do not include file extension)',
                 type: 'string',
